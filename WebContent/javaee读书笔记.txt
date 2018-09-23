@@ -1,0 +1,70 @@
+<<轻量级javaee应用开发实战>> 李刚 读书笔记
+1,tomcat配置用户
+	conf\tomcat-users.xml 文件尾标签前添加
+	<user username="tomcat" password="123456" roles="manager-gui"/>
+2,tomcat 修改服务端口号:conf/server.xml 43行
+	<Connector port="8080" protocol="HTTP/1.1"
+	connectionTimeout="20000"
+	redirectPort="8443" />
+3,一个tomcat可以运行多个服务,
+	复制server.xml文件的<Service name="Catalina">元素,重新命名名称
+4,tomcat显示应用路径下的所有页面
+	conf/web.xml文件中
+	    <servlet>
+        <servlet-name>default</servlet-name>
+        <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>0</param-value>
+        </init-param>
+        <init-param>
+            <param-name>listings</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+	这个servlet 改成true就可以了
+5,windows安装mysql
+6,配置tomcat数据源
+7,创建web项目并部署
+8,简单jsp页面
+生成的java文件在D:\learning\apache-tomcat-8.0.50\work\Catalina\localhost\javaee\org\apache\jsp路径下
+9,jsp声明变量
+<%!%>声明的变量是成员变量,也可以声明方法,就是在这个类中加一个方法
+10,表达式
+<%=info() %> =号后面不要加;号,因为在jsp.java中是这样的
+out.print(info() );
+11,jsp页面jdbc方式连接数据库
+		//注册数据库驱动
+		Class.forName("com.mysql.jdbc.Driver");
+		//获取数据库连接
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "hjw", "123456");
+		//创建statement
+		Statement stmt = conn.createStatement();
+		//执行查询
+		ResultSet rs = stmt.executeQuery("select * from news_inf");
+	%>
+	<table bgcolor="#9999dd" border="1" width="300px">
+		<%
+			while (rs.next()) {
+		%>
+		<tr>
+			<td><%=rs.getString(1)%>
+			<td><%=rs.getString(2)%>
+		</tr>
+		<%
+			}
+		%>
+12 jsp内置对象,jsp.java文件中的_jspService方法定义,一共9个,两个形参,8个局部变量加一个异常
+13 jsp页面没有提示,在buildpath页面需要添加tomcat的library,
+14 表单提交
+	form表单提交时,每个name对应一个参数,有多个相同的name的,参数为数组,当有disabled的时候,不计入参数
+15 自定义标签
+	java类继承SimpleTagSupport,重写doTag方法
+	拷贝tomcat的D:\learning\apache-tomcat-8.0.50\webapps\examples\WEB-INF\jsp2到项目WEB-INF/目录下,修改,
+	jsp页面<%@ taglib uri="http://aaa/mytaglib" prefix="mytag"%>
+	其中的uri可以随便写,但是要和tld文件中一致
+书签:
+146
+	
+            
