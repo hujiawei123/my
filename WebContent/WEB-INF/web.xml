@@ -12,6 +12,16 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	<filter>
+		<filter-name>UrlRewriteFilter</filter-name>
+		<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UrlRewriteFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
 	<context-param>
 		<param-name>driver</param-name>
 		<param-value>com.mysql.jdbc.Driver</param-value>
@@ -44,4 +54,15 @@
 		<servlet-name>config</servlet-name>
 		<url-pattern>/config</url-pattern>
 	</servlet-mapping>
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>/noscript/*</url-pattern>
+			<el-ignored>true</el-ignored>
+			<page-encoding>UTF-8</page-encoding>
+			<scripting-invalid>true</scripting-invalid>
+			<include-prelude>/inc/top.jspf</include-prelude>
+			<!-- 结尾include -->
+			<include-coda>/inc/bottom.jspf</include-coda>
+		</jsp-property-group>
+	</jsp-config>
 </web-app>

@@ -65,6 +65,6 @@ out.print(info() );
 	jsp页面<%@ taglib uri="http://aaa/mytaglib" prefix="mytag"%>
 	其中的uri可以随便写,但是要和tld文件中一致
 书签:
-146
+164
 	
             
