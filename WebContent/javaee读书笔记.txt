@@ -64,7 +64,17 @@ out.print(info() );
 	拷贝tomcat的D:\learning\apache-tomcat-8.0.50\webapps\examples\WEB-INF\jsp2到项目WEB-INF/目录下,修改,
 	jsp页面<%@ taglib uri="http://aaa/mytaglib" prefix="mytag"%>
 	其中的uri可以随便写,但是要和tld文件中一致
+14 	EL:expression language
+	${expression}
+	${1+2} = - * / % div 运算符都支持
+	逻辑运算 > < >= <= != ==
+	获取内置对象 ${cookie['name'].value} ${sessionScope['user']} ${header.host } ${param['name'] }
+	自定义函数:
+		1普通类的静态方法,
+		2,tld文件中配置
+		3,jsp中导入,使用
+15 
 书签:
-164
+190
 	
             

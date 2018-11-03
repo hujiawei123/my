@@ -13,7 +13,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-@WebFilter(filterName="log",urlPatterns= {"/*"})
+//@WebFilter(filterName="log",urlPatterns= {"/*"})
 public class LogFilter implements Filter {
 	private FilterConfig config;
 	@Override
